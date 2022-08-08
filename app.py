@@ -1,4 +1,5 @@
 import flask
+from flask_cors import CORS 
 import os
 import sys
 from flask import Flask, request, send_file
@@ -7,7 +8,7 @@ from datetime import datetime, timedelta
 from pytz import timezone
 import pytz
 app = Flask(__name__)
-
+CORS(app)
 
 # Relative path setup
 cur_path = os.path.abspath(".")
