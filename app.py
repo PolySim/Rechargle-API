@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 from pytz import timezone
 import pytz
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True)
 
 # Relative path setup
 cur_path = os.path.abspath(".")
@@ -66,16 +66,16 @@ def get_images():
         return response
 
 
-@app.route('/api/image1', methods=['GET'])
-def load_image1():
-    meta_path = os.path.join(META_IMGS_PATH, "1"+".json")
+@app.route('/api/image1/<num>', methods=['GET'])
+def load_image1(num):
+    meta_path = os.path.join(META_IMGS_PATH, num+".json")
     with open(meta_path, 'r') as meta_file:
         meta_data = json.load(meta_file)
-    fpath = os.path.join(IMGS_PATH, '/' + str(1) + '/' + meta_data["img1"])
+    fpath = os.path.join(IMGS_PATH, '/' + str(num) + '/' + meta_data["img1"])
     if not os.path.isfile(fpath) or not os.path.exists(fpath):
         raise ValueError(f"No file found: {fpath}")
 
-    return render_template(fpath)
+    return send_file(fpath)
 
 
 @app.route('/api/image2/<num>', methods=['GET'])
@@ -87,7 +87,7 @@ def load_image2(num):
     if not os.path.isfile(fpath) or not os.path.exists(fpath):
         raise ValueError(f"No file found: {fpath}")
 
-    return render_template(fpath)
+    return send_file(fpath)
 
 
 @app.route("/api/update", methods=["PUT"])
