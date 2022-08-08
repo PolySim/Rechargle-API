@@ -1,9 +1,4 @@
 import flask
-import os
-import sys
-from flask import Flask, request, send_file
-from flask_cors import CORS
-import json
 
 
 app = Flask(__name__)
