@@ -73,7 +73,6 @@ def load_image1(num):
     meta_path = os.path.join(META_IMGS_PATH, num+".json")
     with open(meta_path, 'r') as meta_file:
         meta_data = json.load(meta_file)
-    return str(meta_data)
     pic1 = os.path.join(app.config['UPLOAD_FOLDER'], str(num), str(meta_data["img1"]))
     return render_template("1.html", user_image=pic1)
 
@@ -83,7 +82,6 @@ def load_image2(num):
     meta_path = os.path.join(META_IMGS_PATH, num+".json")
     with open(meta_path, 'r') as meta_file:
         meta_data = json.load(meta_file)
-    return str(meta_data)
     pic1 = os.path.join(app.config['UPLOAD_FOLDER'], str(num), str(meta_data["img2"]))
     return render_template("2.html", user_image=pic1)
 
