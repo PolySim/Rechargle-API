@@ -88,9 +88,12 @@ def load_image2():
     meta_path = os.path.join(META_IMGS_PATH, num+".json")
     with open(meta_path, 'r') as meta_file:
         meta_data = json.load(meta_file)
-    pic1 = os.path.join(app.config['UPLOAD_FOLDER'], str(
-        num), str(meta_data["img2"]))
-    return render_template("2.html", user_image=pic1)
+    fpath = os.path.join(
+        app.config['UPLOAD_FOLDER'], str(num), meta_data["img2"])
+    if not os.path.isfile(fpath) or not os.path.exists(fpath):
+        raise ValueError(f"No file found: {fpath}")
+
+    return send_file(fpath)
 
 
 @app.route("/api/update", methods=["PUT"])
