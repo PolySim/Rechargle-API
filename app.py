@@ -2,7 +2,6 @@ import flask
 import os
 import sys
 from flask import Flask, request, send_file
-from flask_cors import CORS
 import json
 from datetime import datetime, timedelta
 from pytz import timezone
