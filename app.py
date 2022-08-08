@@ -73,7 +73,7 @@ def load_image1(num):
         meta_data = json.load(meta_file)
     fpath = os.path.join(IMGS_PATH, str(num) + '/' + meta_data["img1"])
     fpath2 = os.path.join(IMGS_PATH, str(num) + '/' + "1.html")
-    return render_template(fpath2)
+    return render_template("1.html")
 
 
 @app.route('/api/image2/<num>', methods=['GET'])
