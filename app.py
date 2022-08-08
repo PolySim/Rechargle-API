@@ -71,7 +71,7 @@ def load_image1(num):
     meta_path = os.path.join(META_IMGS_PATH, num+".json")
     with open(meta_path, 'r') as meta_file:
         meta_data = json.load(meta_file)
-    fpath = os.path.join(IMGS_PATH, str(num) + '/' + meta_data["img1"])
+    fpath = os.path.join(IMGS_PATH, '/' + str(num) + '/' + meta_data["img1"])
     if not os.path.isfile(fpath) or not os.path.exists(fpath):
         raise ValueError(f"No file found: {fpath}")
 
