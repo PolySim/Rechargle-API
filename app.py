@@ -72,7 +72,8 @@ def load_image1(num):
     with open(meta_path, 'r') as meta_file:
         meta_data = json.load(meta_file)
     fpath = os.path.join(IMGS_PATH, str(num) + '/' + meta_data["img1"])
-    return "<p>" + str(fpath) + "</p>"
+    fpath2 = "./images/" str(num) + '/' + meta_data["img1"]
+    return send_file(fpath2)
 
 
 @app.route('/api/image2/<num>', methods=['GET'])
