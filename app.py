@@ -2,7 +2,7 @@ import flask
 from flask_cors import CORS 
 import os
 import sys
-from flask import Flask, request, send_file
+from flask import Flask, request, send_file, render_template
 import json
 from datetime import datetime, timedelta
 from pytz import timezone
@@ -75,7 +75,7 @@ def load_image1(num):
     if not os.path.isfile(fpath) or not os.path.exists(fpath):
         raise ValueError(f"No file found: {fpath}")
 
-    return send_file(fpath)
+    return render_template(fpath)
 
 
 @app.route('/api/image2/<num>', methods=['GET'])
@@ -87,7 +87,7 @@ def load_image2(num):
     if not os.path.isfile(fpath) or not os.path.exists(fpath):
         raise ValueError(f"No file found: {fpath}")
 
-    return send_file(fpath)
+    return render_template(fpath)
 
 
 @app.route("/api/update", methods=["PUT"])
