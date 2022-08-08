@@ -72,7 +72,7 @@ def load_image1(num):
     with open(meta_path, 'r') as meta_file:
         meta_data = json.load(meta_file)
     fpath = os.path.join(IMGS_PATH, str(num) + '/' + meta_data["img1"])
-    fpath2 = "images/" + str(num) + '/' + str(num) + ".html"
+    fpath2 = os.path.join(IMGS_PATH, str(num) + '/' + "1.html")
     return render_template(fpath2)
 
 
