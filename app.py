@@ -70,7 +70,7 @@ def get_images():
 def load_image1(num):
     meta_path = os.path.join(META_IMGS_PATH, str(num)+".json")
     with open(meta_path, 'r') as meta_file:
-        a = 1
+        meta_data = json.load(meta_file)
     return "<h1>OK</h1>"
 
     return send_file(fpath)
