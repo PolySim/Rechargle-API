@@ -17,6 +17,8 @@ sys.path.append(cur_path)
 # Setup paths to the metadata and images directories
 META_IMGS_PATH = os.path.abspath("./metadata")
 IMGS_PATH = os.path.abspath("./images")
+picFolder = os.path.join("static")
+app.config['UPLOAD_FOLDER'] = picFolder
 
 @app.route('/')
 def index():
@@ -68,12 +70,8 @@ def get_images():
 
 @app.route('/api/image1/<num>', methods=['GET'])
 def load_image1(num):
-    meta_path = os.path.join(META_IMGS_PATH, num+".json")
-    with open(meta_path, 'r') as meta_file:
-        meta_data = json.load(meta_file)
-    fpath = os.path.join(IMGS_PATH, str(num) + '/' + meta_data["img1"])
-    fpath2 = os.path.join(IMGS_PATH, str(num) + '/' + "1.html")
-    return render_template(os.path.abspath(".") + "1.html")
+    pic1 = os.path.join(app.config['UPLOAD_FOLDER'], str(num), "trex.jpeg")
+    return render_template("1.html", user_image=pic1)
 
 
 @app.route('/api/image2/<num>', methods=['GET'])
