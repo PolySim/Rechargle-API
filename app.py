@@ -17,23 +17,9 @@ sys.path.append(cur_path)
 META_IMGS_PATH = os.path.abspath("./metadata")
 IMGS_PATH = os.path.abspath("./images")
 
-# Specify the URL of the React frontned
-FRONTEND_URL = "http://localhost:3000"
-
-
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
 
-
-# Response Header Wrapper function, setting appropriate header permissions
-def add_response_headers(response):
-    response.headers.add('Access-Control-Allow-Origin', FRONTEND_URL)
-    response.headers.add('Access-Control-Allow-Credentials', 'true')
-    response.headers.add('Access-Control-Allow-Headers',
-                         'Content-Type,Authorization,Cache-Control')
-    response.headers.add('Access-Control-Allow-Methods',
-                         'GET,PUT,POST,DELETE,OPTIONS')
-    return response
 
 @app.route('/')
 def index():
@@ -58,7 +44,6 @@ def get_information():
         print(f"Failed with message: {str(e)}")
         response = flask.make_response(
             "Dataset screen display unsuccessful...", 403)
-        response = add_response_headers(response)
         return response
 
 
