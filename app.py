@@ -1,5 +1,5 @@
 import flask
-from flask_cors import CORS 
+from flask_cors import CORS
 import os
 import sys
 from flask import Flask, request, send_file, render_template
@@ -20,9 +20,11 @@ IMGS_PATH = os.path.abspath("./images")
 picFolder = os.path.join("static")
 app.config['UPLOAD_FOLDER'] = picFolder
 
+
 @app.route('/')
 def index():
     return "<h1>Hello World</h1>"
+
 
 @app.route('/hello')
 def say_hello_world():
@@ -102,8 +104,9 @@ def update_info():
         values = request.json
         paris_day = datetime.now(pytz.timezone('Europe/Paris')).day
         if str(paris_day) != values["jour"]:
-            values = {"jour" : str(paris_day), "win" : "0", "lose" : "0", "numero" : str(int(values["numero"]))}
-            # values = {"jour" : str(paris_day), "win" : "0", "lose" : "0", "numero" : str(int(values["numero"]) + 1)}
+            # values = {"jour" : str(paris_day), "win" : "0", "lose" : "0", "numero" : str(int(values["numero"]))}
+            values = {"jour": str(paris_day), "win": "0", "lose": "0", "numero": str(
+                int(values["numero"]) + 1)}
         meta_fpath = os.path.join(META_IMGS_PATH, "info.json")
         with open(meta_fpath, 'w') as meta_filee:
             json.dump(values, meta_filee)
