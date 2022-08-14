@@ -111,8 +111,13 @@ def update_info():
             values = {"jour": str(paris_day), "win": "0", "lose": "0", "numero": str(
                 int(values["numero"]) + 1)}
         meta_fpath = os.path.join(META_IMGS_PATH, "info.json")
+        new_info = meta_data
+        if "win" in values:
+            new_info["win"] = str(int(new_info["win"]) + 1)
+        else:
+            new_info["lose"] = str(int(new_info["lose"]) + 1)
         with open(meta_fpath, 'w') as meta_filee:
-            json.dump(values, meta_filee)
+            json.dump(new_info, meta_filee)
 
         response = flask.jsonify({"success": True})
     except Exception as e:
