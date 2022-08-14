@@ -104,9 +104,9 @@ def update_info():
         values = request.json
         paris_day = datetime.now(pytz.timezone('Europe/Paris')).day
         meta_path = os.path.join(META_IMGS_PATH, "info.json")
-        new_info = meta_data
         with open(meta_path, 'r') as meta_file:
             meta_data = json.load(meta_file)
+        new_info = meta_data
         if str(paris_day) != meta_data["jour"]:
             # values = {"jour" : str(paris_day), "win" : "0", "lose" : "0", "numero" : str(int(values["numero"]))}
             new_info = {"jour": str(paris_day), "win": "0", "lose": "0", "numero": str(
