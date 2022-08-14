@@ -112,7 +112,9 @@ def update_info():
                 int(values["numero"]) + 1)}
         meta_fpath = os.path.join(META_IMGS_PATH, "info.json")
         new_info = meta_data
-        if "win" in values:
+        if "jour" in values:
+            pass
+        elif "win" in values:
             new_info["win"] = str(int(new_info["win"]) + 1)
         else:
             new_info["lose"] = str(int(new_info["lose"]) + 1)
