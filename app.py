@@ -16,8 +16,7 @@ sys.path.append(cur_path)
 
 # Setup paths to the metadata and images directories
 META_IMGS_PATH = os.path.abspath("./metadata")
-IMGS_PATH = os.path.abspath("./images")
-picFolder = os.path.join("static")
+picFolder = os.path.join("./static")
 app.config['UPLOAD_FOLDER'] = picFolder
 
 
